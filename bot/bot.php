@@ -351,12 +351,11 @@ if($userstatus == "kicked"){
 $sql = "UPDATE `users` SET `status` = 'deactive' WHERE `id` = '$botdel_id'";
 $result = mysqli_query($connect, $sql);
 }
-
+}
 
 if(isset($update)) {
 $result = mysqli_query($connect,"SELECT * FROM users WHERE id = $cid$chat_id");
 $rew = mysqli_fetch_assoc($result);
-}
 }
 
 if(isset($update)) {
@@ -367,6 +366,21 @@ if($cid == $admin){
 }else{
 exit(); 
 }}}
+
+if(isset($update)) {
+    $bot_status = @file_get_contents("status.txt");
+    $check_id = $cid ? $cid : $chat_id;
+    if($bot_status == "off" && $check_id != $admin) {
+        if ($text || $data) {
+            bot('sendMessage', [
+                'chat_id' => $check_id,
+                'text' => "<b>🛠 Uzr, botda texnik xizmat ishlari olib borilmoqda. Iltimos birozdan so'ng qayta urinib ko'ring.</b>",
+                'parse_mode' => 'html'
+            ]);
+        }
+        exit();
+    }
+}
 
 
 $resu = mysqli_query($connect,"SELECT * FROM `settings`");
@@ -420,6 +434,8 @@ $panel=json_encode([
 [['text'=>"⚙️ Asosiy sozlamalar"]],
 [['text'=>"🔔 Xabar yuborish"],['text'=>"📊 Statistika"]],
 [['text'=>"👤 Foydalanuvchini boshqarish"]],
+[['text'=>"🎁 Promokod yaratish"],['text'=>"📋 Promokodlar ro'yxati"]],
+[['text'=>"💰 Hisob to'ldirish (ID)"],['text'=>"⚙️ Botni o'chirish/yoqish"]],
 [['text'=>"🇺🇿 Valyuta kursi"],['text'=>"⏰ Cron sozlamasi"]],
 [['text'=>"⏪ Orqaga"]],
 ]]);
@@ -2287,6 +2303,26 @@ sms($cid,$start,$m);
 
 }
 
+if($text && file_exists("promocodes/$text.txt") && !file_exists("promouser/$cid-$text.txt")){
+    @mkdir("promouser");
+    $amount = file_get_contents("promocodes/$text.txt");
+    $rew = mysqli_fetch_assoc(mysqli_query($connect,"SELECT * FROM users WHERE id = $cid"));
+    $new_bal = $rew['balance'] + $amount;
+    mysqli_query($connect,"UPDATE users SET balance=$new_bal WHERE id=$cid");
+    file_put_contents("promouser/$cid-$text.txt", "used");
+    bot('sendMessage', [
+        'chat_id' => $cid,
+        'text' => "<b>🎁 Tabriklaymiz! Siz '$text' promokodini faollashtirdingiz va hisobingizga $amount so'm qo'shildi!</b>",
+        'parse_mode' => 'html'
+    ]);
+} elseif ($text && file_exists("promocodes/$text.txt") && file_exists("promouser/$cid-$text.txt")) {
+    bot('sendMessage', [
+        'chat_id' => $cid,
+        'text' => "<b>⚠️ Siz bu promokoddan foydalanib bo'lgansiz!</b>",
+        'parse_mode' => 'html'
+    ]);
+}
+
 if($text=="⏪ Orqaga" and joinchat($cid)==1){
 sms($cid,"🖥️ Asosiy menyudasiz",$m);
 unlink("user/$cid.step");
@@ -2328,6 +2364,67 @@ sms($cid,"<b>
 1 ₺(TRY) - $try UZS
 </b>",$panel);
 
+}
+
+if($text == "⚙️ Botni o'chirish/yoqish" and $cid == $admin){
+    $status = file_get_contents("status.txt");
+    if($status == "off"){
+        file_put_contents("status.txt", "on");
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "<b>✅ Bot yoqildi! Endi foydalanuvchilar botdan foydalana oladi.</b>",
+            'parse_mode' => 'html'
+        ]);
+    } else {
+        file_put_contents("status.txt", "off");
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "<b>🛑 Bot o'chirildi! (Texnik xizmat rejimi). Foydalanuvchilar botdan foydalana olmaydi.</b>",
+            'parse_mode' => 'html'
+        ]);
+    }
+}
+
+if($text == "🎁 Promokod yaratish" and $cid == $admin){
+    bot('sendMessage', [
+        'chat_id' => $cid,
+        'text' => "<b>Promokod nomini kiriting:</b>",
+        'parse_mode' => 'html',
+        'reply_markup' => $ort
+    ]);
+    file_put_contents("user/$cid.step", "promo_name");
+}
+
+if($step == "promo_name" and $cid == $admin and $text != "⏪ Orqaga"){
+    file_put_contents("user/promoname.txt", $text);
+    bot('sendMessage', [
+        'chat_id' => $cid,
+        'text' => "<b>Promokod qancha pul berishini kiriting (masalan, 1000):</b>",
+        'parse_mode' => 'html',
+        'reply_markup' => $ort
+    ]);
+    file_put_contents("user/$cid.step", "promo_amount");
+}
+
+if($step == "promo_amount" and $cid == $admin and $text != "⏪ Orqaga"){
+    if(is_numeric($text)){
+        @mkdir("promocodes");
+        $promo_name = file_get_contents("user/promoname.txt");
+        file_put_contents("promocodes/$promo_name.txt", $text);
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "<b>✅ '$promo_name' promokodi $text so'm qiymat bilan yaratildi!</b>\n\nFoydalanuvchilarga tarqatishingiz mumkin.",
+            'parse_mode' => 'html',
+            'reply_markup' => json_decode($panel, true) ? $panel : null
+        ]);
+        unlink("user/$cid.step");
+    } else {
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "<b>⚠️ Iltimos, faqat raqam kiriting:</b>",
+            'parse_mode' => 'html'
+        ]);
+    }
 }
 
 
