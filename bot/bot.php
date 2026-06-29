@@ -2425,6 +2425,85 @@ if($step == "promo_amount" and $cid == $admin and $text != "⏪ Orqaga"){
             'parse_mode' => 'html'
         ]);
     }
+
+
+// ===== Promokodlar ro'yxati =====
+if($text == "📋 Promokodlar ro'yxati" and $cid == $admin){
+    @mkdir("promocodes");
+    $files = glob("promocodes/*.txt");
+    if(empty($files)){
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "<b>📋 Hech qanday promokod mavjud emas.</b>",
+            'parse_mode' => 'html',
+            'reply_markup' => $panel
+        ]);
+    } else {
+        $list = "";
+        $kb = [];
+        foreach($files as $f){
+            $name = basename($f, ".txt");
+            $amount = file_get_contents($f);
+            $list .= "🎁 <code>$name</code> — <b>$amount so'm</b>\n";
+            $kb[] = [['text' => "🗑 $name o'chirish", 'callback_data' => "del_promo=$name"]];
+        }
+        bot('sendMessage', [
+            'chat_id' => $cid,
+            'text' => "<b>📋 Mavjud promokodlar:</b>\n\n$list",
+            'parse_mode' => 'html',
+            'reply_markup' => json_encode(['inline_keyboard' => $kb])
+        ]);
+    }
+}
+
+if(stripos($data, "del_promo=") !== false and $cid2 == $admin){
+    $promo_del = explode("=", $data)[1];
+    if(file_exists("promocodes/$promo_del.txt")){
+        unlink("promocodes/$promo_del.txt");
+        $used_files = glob("promouser/*-$promo_del.txt");
+        if($used_files){ foreach($used_files as $uf){ @unlink($uf); } }
+        bot('answerCallbackQuery', ['callback_query_id'=>$qid,'text'=>"✅ '$promo_del' promokodi o'chirildi!",'show_alert'=>true]);
+        bot('deleteMessage', ['chat_id'=>$cid2,'message_id'=>$mid2]);
+    }
+}
+
+// ===== Hisob to'ldirish (ID orqali) =====
+if($text == "💰 Hisob to'ldirish (ID)" and $cid == $admin){
+    bot('sendMessage', ['chat_id'=>$cid,'text'=> "<b>👤 Foydalanuvchi Telegram IDsini kiriting:</b>",'parse_mode'=>'html','reply_markup'=>$ort]);
+    file_put_contents("user/$cid.step", "manual_topup_id");
+}
+
+if($step == "manual_topup_id" and $cid == $admin){
+    if(is_numeric($text)){
+        $check = mysqli_fetch_assoc(mysqli_query($connect, "SELECT * FROM users WHERE id = $text"));
+        if($check){
+            file_put_contents("user/$cid.topup_id.txt", $text);
+            bot('sendMessage', ['chat_id'=>$cid,'text'=> "<b>💰 Qancha so'm qo'shish kerak?</b>\n\n<i>Foydalanuvchi: <a href='tg://user?id=$text'>$text</a>\nJoriy balansi: ".$check['balance']." so'm</i>",'parse_mode'=>'html','reply_markup'=>$ort]);
+            file_put_contents("user/$cid.step", "manual_topup_amount");
+        } else {
+            bot('sendMessage', ['chat_id'=>$cid,'text'=> "<b>⚠️ Bu IDda foydalanuvchi topilmadi.</b>",'parse_mode'=>'html']);
+        }
+    } else {
+        bot('sendMessage', ['chat_id'=>$cid,'text'=> "<b>⚠️ Faqat raqam (Telegram ID) kiriting:</b>",'parse_mode'=>'html']);
+    }
+}
+
+if($step == "manual_topup_amount" and $cid == $admin){
+    if(is_numeric($text)){
+        $target_id = file_get_contents("user/$cid.topup_id.txt");
+        $u = mysqli_fetch_assoc(mysqli_query($connect, "SELECT * FROM users WHERE id = $target_id"));
+        $new_bal = $u['balance'] + $text;
+        $new_out = $u['outing'] + $text;
+        mysqli_query($connect, "UPDATE users SET balance=$new_bal, outing=$new_out WHERE id=$target_id");
+        bot('sendMessage', ['chat_id'=>$cid,'text'=> "<b>✅ Muvaffaqiyatli!\n\n👤 Foydalanuvchi: <a href='tg://user?id=$target_id'>$target_id</a>\n💵 Qo'shilgan: $text so'm\n🏦 Yangi balans: $new_bal so'm</b>",'parse_mode'=>'html','reply_markup'=>$panel]);
+        bot('sendMessage', ['chat_id'=>$target_id,'text'=> "<b>✅ Hisobingizga $text so'm qo'shildi!\n🏦 Yangi balansingiz: $new_bal so'm</b>",'parse_mode'=>'html']);
+        @unlink("user/$cid.topup_id.txt");
+        unlink("user/$cid.step");
+    } else {
+        bot('sendMessage', ['chat_id'=>$cid,'text'=> "<b>⚠️ Faqat raqam (miqdor) kiriting:</b>",'parse_mode'=>'html']);
+    }
+}
+
 }
 
 
