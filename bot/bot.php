@@ -1789,15 +1789,18 @@ $saved = file_get_contents("user/us.id");
 
 if($text == "👤 Foydalanuvchini boshqarish"){
 if($cid == $admin){
-	bot('SendMessage',[
-	'chat_id'=>$cid,
-	'text'=>"<b>Kerakli foydalanuvchining ID raqamini kiriting:</b>",
-	'parse_mode'=>'html',
-	'reply_markup'=>$aort,
-	]);
-file_put_contents("user/$cid.step",'iD');
+bot('sendMessage',[
+'chat_id'=>$cid,
+'text'=>"<b>👤 Foydalanuvchini boshqarish</b>\n\nQuyidagilardan birini tanlang:",
+'parse_mode'=>'html',
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[['text'=>"🔎 ID orqali qidirish",'callback_data'=>"usermgmt=search"]],
+[['text'=>"📋 So'nggi 10 foydalanuvchi",'callback_data'=>"usermgmt=recent"]],
+[['text'=>"📊 Foydalanuvchilar statistikasi",'callback_data'=>"usermgmt=stats"]],
+]])
+]);
 }
-
 }
 
 if($step == "iD"){
