@@ -3,6 +3,35 @@
 
 require ('sql_connect.php');
 
+define('API_KEY',"5687849603:AAGgQ9sY9bbYQJKnFeVJaVm8rYkL3vHsEqY");
+
+function sms($id,$tx,$m){
+return bot('sendMessage',[
+'chat_id'=>$id,
+'text'=>$tx,
+'parse_mode'=>"HTML",
+'reply_markup'=>$m,
+]);
+}
+
+function get($h){
+return file_get_contents($h);
+}
+
+function bot($method,$datas=[]){
+    $url = "https://api.telegram.org/bot".API_KEY."/".$method;
+    $ch = curl_init();
+    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    curl_setopt($ch,CURLOPT_POSTFIELDS,$datas);
+    $res = curl_exec($ch);
+    if(curl_error($ch)){
+        var_dump(curl_error($ch));
+    }else{
+        return json_decode($res);
+    }
+}
+
 header('Content-type:application/json');
 $key = $_REQUEST['key'];
 $service = $_REQUEST['service'];
@@ -52,14 +81,23 @@ if(empty($jid)){
 echo json_encode(['error'=>"Unknown error, please try again later"]);
 exit;
 }else{
-$orders = mysqli_num_rows(mysqli_query($connect,"SELECT * FROM `orders`"));
+$orders=mysqli_fetch_assoc(mysqli_query($connect,"SELECT * FROM `settings` WHERE id=1"))['ordercount'];
 $order_id =$orders+1;
+mysqli_query($connect,"UPDATE settings SET ordercount='$order_id' WHERE id=1");
 $ball = $res['balance']-$narxi;
 $sav = date("Y.m.d H:i:s");
 mysqli_query($connect,"UPDATE `users` SET balance='$ball' WHERE api_key = '$key'");
 mysqli_query($connect,"INSERT INTO myorder(`order_id`,`user_id`,`retail`,`status`,`service`,`order_create`,`last_check`) VALUES ('$order_id','$res[id]','$narxi','Pending','$service','$sav','$sav');");
 mysqli_query($connect,"INSERT INTO orders(`api_order`,`order_id`,`provider`,`status`) VALUES ('$jid','$order_id','$api','Pending');");
+mysqli_query($connect,"INSERT INTO neworder(`order_id`,`api_order_id`,`provider`,`user_id`,`retail`,`status`,`service`,`order_create`,`last_check`) VALUES ('$order_id','$jid','$api','$res[id]','$narxi','Pending','$service','$sav','$sav');");
 echo json_encode(['order'=>$order_id,'charge'=>$narxi,'currency'=>"UZS"]);
+sms("@gramapi_orders","<b>🆕 API | Yangi buyurtma:</b> <code>$order_id</code>
+
+<b>🛍 Xizmat IDsi:</b> <code>$service</code>
+<b>💰 Buyurtma narxi:</b> $narxi so'm
+<b>👤 Buyurtmachi:</b> <a href='tg://user?id=".$res['id']."'>".$res['id']."</a>
+<b>⏺ Oldingi balansi:</b> ".$res['balance']."  so'm
+<b>➡️ Yangi balansi:</b> $ball so'm",null);
 exit;
 }
 
