@@ -26,640 +26,290 @@ function countRow($data){
 ?>
 
 <!DOCTYPE html>
-<html lang="uz"><head>
+<html lang="uz">
+<head>
   <base href="https://<?=$_SERVER['HTTP_HOST']?>">
-  
-  
-  <title><?=strtoupper($_SERVER['HTTP_HOST'])?></title>
-  <meta property="og:title" content="The Best SMM Panel. Super Cheap & Super Fast!" />
+  <title><?=strtoupper($_SERVER['HTTP_HOST'])?> - Premium SMM Panel</title>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="Smm panel russian and uzbekistan,smm panel script,smm panel promotion,smm panel netflix,smm panel world,smm panel for free fire,smm panel premium accounts,smm panel app,smm panel apk,smm panel amazon prime,smm panel adalah,smm panel australia,smm panel america,smm panel accept paypal,smm panel api integration,the smm panel,create a smm panel,smm panel blue badge,smm panel bd,smm panel blackhatworld,smm panel bitcoin,smm panel boost,smm panel best price,smm panel business,smm panel bhw,best smm panel,smm panel club,smm panel creator,smm panel cheap india,smm panel.com,smm panel carding,smm panel comparison,total smm panel.com,smm panel service.com,c-dl.com smm panel,c-di.com smm panel,smm panel domain,smm panel discord,smm panel design,smm panel developer,smm panel drip feed,smm panel deutsch,smm panel data,smm panel script download free,original smm panel,smm panel ekşi,best smm panel ever,elite smm panel,easy smm panel,expert smm panel,ecommerce smm panel,enigma smm panel script,smm panel for carding,smm panel for youtube mo">
-  <meta name="description" content=" has the Cheapest SMM Panel and 100% High Quality for all social networks. Get the best Instagram panel today">
-  <meta property="og:description" content=" has the Cheapest SMM Panel and 100% High Quality for all social networks. Get the best Instagram panel today" />    <link rel="shortcut icon" type="image/ico" href="public/images/8df1bd5982b694d09ace0550ed9f0738fc91dc3e.png" />
- 
+  <meta name="description" content="<?=strtoupper($_SERVER['HTTP_HOST'])?> has the Cheapest SMM Panel and 100% High Quality for all social networks. Get the best panel today">
+  <link rel="shortcut icon" type="image/ico" href="public/images/8df1bd5982b694d09ace0550ed9f0738fc91dc3e.png" />
   
-      <link rel="stylesheet" type="text/css" href="https://<?=$_SERVER['HTTP_HOST']?>/public/<?=$theme?>/bootstrap.css">
-      <link rel="stylesheet" type="text/css" href="https://<?=$_SERVER['HTTP_HOST']?>/public/<?=$theme?>/<?=$style?>.css">
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><center>
-
-
-
-  </head>
- <style>
-
-
-.main-panel .index-announcement {
-    float: left;
-    width: 100%;
-    border-radius: 10px;
-}
-.main-panel .index-announcement .index-announcement-title {
-    float: left;
-    width: 100%;
-    margin-top: 0;
-    font-weight: 600;
-    color: #000000;
-    margin-bottom: 1px;
-    background: #AA00FF;
-    padding: 20px 30px;
-    border-radius: 10px 10px 0 0;
-}
-.main-panel .index-announcement .index-announcement-bell {
-    float: left;
-    width: 50%;
-    padding-right: 43px;
-    text-align: right;
-    margin-top: -20px;
-    }
-    
-.main-panel .index-announcement .index-announcement-content {
-    float: left;
-    width: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    height: 470px;
-    padding: 0 30px;
-    background: #ffffff;
-    border-radius: 0 0 10px 10px;
-}
-.main-panel .index-announcement ul {
-    float: left;
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 0;
-    border-left: 4px solid #eff0ff;
-    padding-left: 30px;
-}
-.main-panel .index-announcement ul li {
-    list-style: none;
-    float: left;
-    width: 100%;
-    position: relative;
-    margin-bottom: 45px;
-    box-shadow: 1px 5px 19px 0 rgb(0 0 0 / 22%);
-    padding: 20px;
-    border-radius: 0 0 6px 6px;
-}
-.main-panel .index-announcement ul li:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 1px;
-}
-.main-panel .index-announcement ul li .icon {
-    position: absolute;
-    left: -52px;
-    top: 48px;
-    width: 40px;
-    height: 40px;
-    padding: 7px 0;
-    text-align: center;
-    background: #eff0ff;
-    font-size: 16px;
-    border-radius: 3px;
-    box-shadow: 1px 5px 19px 0 rgba(255,255,255,0.05);
-}
-.main-panel .index-announcement ul li .time {
-    float: left;
-    color: #8c909a;
-    border-radius: 3px;
-    margin-top: 8px;
-}
-.main-panel .index-announcement ul li .time i {
-    margin-right: 5px;
-}
-.main-panel .index-announcement ul li .t-instagram {
-    color: #f40083;
-    border-color: #f40083;
-}
-.main-panel .index-announcement ul li .service {
-    float: left;
-    width: 100%;
-    color: #48494c;
-    font-weight: 600;
-    margin-top: 10px;
-}
-.main-panel .index-announcement ul li .desc {
-    float: left;
-    width: 100%;
-    color: #8c909a;
-    margin-top: 5px;
-}
-.main-panel .index-announcement ul li .title {
-    float: right;
-    color: #8c909a;
-    padding: 5px 10px;
-    border: 1px solid #8c909a;
-    border-radius: 3px;
-    width: 90px;
-    text-align: center;
-    position: relative;
-}
-.main-panel .index-announcement ul li .t-instagram {
-    color: #f40083;
-    border-color: #f40083;
-}
-.main-panel .index-announcement ul li .icon img {
-    max-width: 60%;
-}
-.w .index-announcement-title {
-    float: left;
-    width: 100%;
-    margin-top: 0px;
-    font-weight: 600;
-    color: #000000;
-    margin-bottom: 12px;
-    background: #ffffff;
-    padding: 20px 30px;
-    border-radius: 10px 10px 0 0;
-    border-bottom: 1px solid #f33694;
-}
-
-
-</style>
-
-
-
-
-
-
-
-
-<body class="body ">
-<div class="wrapper  wrapper-navbar ">
-   <div id="block_80">
-    <div class="block-wrapper">
-        <div class="component_navbar ">
-          <div class="component-navbar__wrapper">
-             <div class="sidebar-block__top component-navbar component-navbar__navbar-public editor__component-wrapper">
-                <div>
-                   <nav class="navbar navbar-expand-lg navbar-light">
-                      <div class="sidebar-block__top-brand">
-                                                        <div class="component-navbar-brand component-navbar-public-brand">
-                                                                  <a target="_self" href="/"><span style="text-transform: "><span style="font-size: 24px"><span style="letter-spacing: 1.0px"><span style="line-height: 120px"><strong style="font-weight: bold"><?=strtoupper($_SERVER['HTTP_HOST'])?></strong></span></span></span></span></a>
-                                                              </div>
-                                                                          </div>
-                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-14" aria-controls="navbar-collapse-14" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-burger">
-                        <span class="navbar-burger-line"></span>
-                    </span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbar-collapse-14">
-                     <div class="component-navbar-collapse-divider"></div>
-                     <div class="d-flex component-navbar-collapse">
-                        <ul class="navbar-nav navbar-nav-sidebar-menu">
-<li class="nav-item component-navbar-nav-item component-navbar-private-nav-item">
-<a class="component-navbar-nav-link  component-navbar-nav-link__navbar-private "     href="/services" >
-                                                                                      <span class="component-navbar-nav-link-icon">
-                                             <img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/social.png" width=20 height=20>
-                                           </span>Xizmatlar
-                                                                        </a>
-                               </li>                   <li class="nav-item component-navbar-nav-item component-navbar-private-nav-item">
-<a class="component-navbar-nav-link  component-navbar-nav-link__navbar-private "     href="/api" >
-                                                                                      <span class="component-navbar-nav-link-icon">
-                                             <img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/api.png" width=20 height=20>
-                                           </span>API
-                                                                        </a>
-                               </li>                   <li class="nav-item component-navbar-nav-item component-navbar-private-nav-item">
-<a class="component-navbar-nav-link  component-navbar-nav-link__navbar-private "     href="https://t.me/<?=$bot?>" >
-                                                                                      <span class="component-navbar-nav-link-icon">
-                                             <img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/bot.png" width=20 height=20>
-                                           </span>Bot
-                                                                        </a>
-                               </li> 
-							   
-
-                                                           </ul>
-														  
-
-</nav>
-                         </div>
-      </div> 
-</div>
-</div>  
-</div>
-
-<br>
-<br> <style>
- .body .modal .modal-content {
-    background: #fff;
-    color: black;
-}
-
-.modal-header h5 {
-    color: black;
-}
-.modal-footer a {
-    color: #fff;
-}
-.modal-header{
- border-bottom: none;
-}
-.modal-footer{
- border-top: none;
-}
- </style>
-   <div class="wrapper-content">
-    <div class="wrapper-content__header">
-          </div>
-    <div class="wrapper-content__body">
-  <br>  <div id="block_166">
-  <div class="totals ">
-    <div class="bg"></div>
-    <div class="divider-top"></div>
-    <div class="divider-bottom"></div>
-    <div class="container">
-      <div class="row align-items-start justify-content-start">
-                              <div class="col-lg-4 col-md-6 mb-2 mt-2">
-              <div class="card h-100"
-                   style="
-                                                                                    padding-top: 24px;                                  padding-bottom: 24px;                                                                                                                                                                                                                                                                                                                                                                                                 ">
-                <div class="totals-block__card">
-                  <div class="totals-block__card-left">
-                    <div
-                        class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
-                        style="
-                                                                                                                                                                                                                    ">
-                      <br>  <center><img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/social.png" width=60 height=60><h2 class="totals-block__count-value style-text-primary"><?=countRow(['table'=>"services"]) ?></h2></center>
-                    <center><p>Barcha xizmatlar</p></center><br>
-</div>
-                  </div>
-                  <div class="totals-block__card-right">
-                    <div class="totals-block__count">
-                      
-                    </div>
-                    <div class="totals-block__card-name">
-                                              
-                                          </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-                                        <div class="col-lg-4 col-md-6 mb-2 mt-2">
-              <div class="card h-100"
-                   style="
-                                                                                    padding-top: 24px;                                  padding-bottom: 24px;                                                                                                                                                                                                                                                                                                                                                                                                 ">
-                <div class="totals-block__card">
-                  <div class="totals-block__card-left">
-                    <div
-                        class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
-                        style="
-                                                                                                                                                                                                                    ">
-                      <br> <center><img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/order.png" width=60 height=60><h2 class="totals-block__count-value style-text-primary"><?=countRow(['table'=>"orders","where"=>["status"=>"Completed"]]) ?></h2></center>
-                  <center><p>Bajarilgan buyurtmalar</p></center><br>  </div>
-                    
-                  </div>
-                  <div class="totals-block__card-right">
-                    <div class="totals-block__count">
-               
-                    </div>
-                    <div class="totals-block__card-name">
-                                              
-                                          </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-                                        <div class="col-lg-4 col-md-6 mb-2 mt-2">
-              <div class="card h-100"
-                   style="
-                                                                                    padding-top: 24px;                                  padding-bottom: 24px;                                                                                                                                                                                                                                                                                                                                                                                                 ">
-                <div class="totals-block__card">
-                  <div class="totals-block__card-left">
-                  <div class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
-                        style="
-                                                                                                                                                                                                                    ">
-              <br><center><img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/man.png" width=60 height=60><h2 class="totals-block__count-value style-text-primary"><?=countRow(['table'=>"users"]) ?></h2></center>
-                    <center><p>Barcha obunachilar</p></center><br>
-</div>
-                  </div>
-                  
-                  <div class="totals-block__card-right">
-                    <div class="totals-block__count">
-                  
-                    </div>
-                    <div class="totals-block__card-name">
-                                              
-                                          </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-2 mt-2">
-              <div class="card h-100"
-                   style="
-                                                                                    padding-top: 24px;                                  padding-bottom: 24px;                                                                                                                                                                                                                                                                                                                                                                                                 ">
-                <div class="totals-block__card">
-                  <div class="totals-block__card-left">
-                    <div
-                        class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
-                        style="
-                                                                                                                                                                                                                    ">
-                      <br> <center><img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/24-hours.png" width=60 height=60><h2 class="totals-block__count-value style-text-primary">24/7</h2></center>
-                  <center><p>Tezkor yordam markazi</p></center><br>  </div>
-                    
-                  </div>
-                  <div class="totals-block__card-right">
-                    <div class="totals-block__count">
-               
-                    </div>
-                    <div class="totals-block__card-name">
-                                              
-                                          </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-2 mt-2">
-              <div class="card h-100"
-                   style="
-                                                                                    padding-top: 24px;                                  padding-bottom: 24px;                                                                                                                                                                                                                                                                                                                                                                                                 ">
-                <div class="totals-block__card">
-                  <div class="totals-block__card-left">
-                    <div
-                        class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
-                        style="
-                                                                                                                                                                                                                    ">
-                      <br> <center><img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/free.png" width=60 height=60><h2 class="totals-block__count-value style-text-primary"><?=countRow(['table'=>"services","where"=>["service_price"=>"0"]]) ?></h2></center>
-                  <center><p>Bepul xizmatlar</p></center><br>  </div>
-                    
-                  </div>
-                  <div class="totals-block__card-right">
-                    <div class="totals-block__count">
-               
-                    </div>
-                    <div class="totals-block__card-name">
-                                              
-                                          </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-2 mt-2">
-              <div class="card h-100"
-                   style="
-                                                                                    padding-top: 24px;                                  padding-bottom: 24px;                                                                                                                                                                                                                                                                                                                                                                                                 ">
-                <div class="totals-block__card">
-                  <div class="totals-block__card-left">
-                  <div class="totals-block__icon-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary"
-                        style="
-                                                                                                                                                                                                                    ">
-              <br><center><img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/total.png" width=60 height=60><h2 class="totals-block__count-value style-text-primary" ><?=countRow(['table'=>"orders"]) ?></h2></center>
-                    <center><p>Barcha buyurtmalar soni</p></center><br>
-</div>
-                  </div>
-                  
-                                                                              </div>
-    </div>
-  </div>
-</div>
-      <!-- Main variables *content* -->
-      <div id="block_105">
-    <div class="block-signin-text ">
-        <div class="bg"></div>
-        <div class="divider-top"></div>
-        <div class="divider-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7">
-                    <div class="block-signin-text__block-text">
-                        <div class="block-signin-text__block-text-title">
-                                                            <h1> Ijtimoiy akkauntingiz obunachilari va yoqtirishlarini bir joyda, bir zumda oling </h1>
-                                                    </div>
-                        <div class="block-signin-text__block-text-description">
-                          <p>Ijtimoiy hisobingizni bitta panelda boshqarish uchun vaqtni tejang. Odamlar Facebook reklamalarini boshqarish, Instagram, YouTube, Twitter, Soundcloud, veb-sayt reklamalari va boshqalar kabi SMM xizmatlarini qaerdan sotib olishadi!</p> </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div><br><br>
-                	<br>
-                	<br><br>
-                	<br>
-</div>
-<div id="block_102">
-    <div class="header-with-text ">
-        <div class="bg"></div>
-        <div class="divider-top"></div>
-        <div class="divider-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="text-block__title">
-                                                    <center><h2 class="text-center">Nima uchun <b><?=strtoupper($_SERVER['HTTP_HOST'])?></b> <br></center>
-<strong style="font-weight: bold"><?=strtoupper($_SERVER['HTTP_HOST'])?></strong>’dan SMM xizmatlariga buyurtma berish kerak?</h2>
-                                            </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="text-block__description">
-                                                    <p class="text-center">Bizning panelda SMM xizmatlariga buyurtma berishdan qanday foyda olishingiz mumkinligini bilib oling.</p>
-                                            </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="block_72">
-    <div class="features-block-icons ">
-        <div class="bg"></div>
-        <div class="divider-top"></div>
-        <div class="divider-bottom"></div>
-        <div class="container">
-            <div class="row align-items-start justify-content-start">
-                                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="card features-block__card h-100"
-                             style="
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ">
-                            <div class="features-block__header">
-                                <div class="features-block__header-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary" style="margin-bottom: 10px;
-                                         height: 96px;                                                                                                                                                                                                                                                 ">
-                                    <?php if($theme == "Eternity") {
-echo "<br>";
-}?>
-?><img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/money.png" width=60 height=60>
-                                </div>
-                                                                    <div class="features-block__header-title" style="margin-bottom: 8px; padding-left: 0px; padding-right: 0px;">
-                                                                                    <p><strong style="font-weight: bold">Eng arzon SMM panel</strong></p>
-                                                                            </div>
-                                                            </div>
-                            <div class="features-block__body">
-                                                                    <div class="features-block__body-description" style="padding-left: 0px; padding-right: 0px;">
-                                                                                    <p><strong style="font-weight: bold"><?=strtoupper($_SERVER['HTTP_HOST'])?></strong> Panel bozordagi barcha mavjud panellar orasida eng arzon.</p>
-                                                                            </div>
-                                                            </div>
-                        </div>
-                    </div>
-                                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="card features-block__card h-100"
-                             style="
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ">
-                            <div class="features-block__header">
-                                <div class="features-block__header-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary" style="margin-bottom: 10px;
-                                         height: 96px;                                                                                                                                                                                                                                                 ">
-                                    <?php if($theme == "Eternity") {
-echo "<br>";
-}?>
-<img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/profits.png" width=60 height=60>
-                                </div>
-                                                                    <div class="features-block__header-title" style="margin-bottom: 8px; padding-left: 0px; padding-right: 0px;">
-                                                                                    <p><strong style="font-weight: bold"><?=strtoupper($_SERVER['HTTP_HOST'])?></strong></p>
-                                                                            </div>
-                                                            </div>
-                            <div class="features-block__body">
-                                                                    <div class="features-block__body-description" style="padding-left: 0px; padding-right: 0px;">
-                                                                                    <p><strong style="font-weight: bold"><?=strtoupper($_SERVER['HTTP_HOST'])?></strong> ko‘plab to‘lov tizimlari mavjud.</p>
-                                                                            </div>
-                                                            </div>
-                        </div>
-                    </div>
-                                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="card features-block__card h-100"
-                             style="
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ">
-                            <div class="features-block__header">
-                                <div class="features-block__header-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary" style="margin-bottom: 10px;
-                                         height: 96px;                                                                                                                                                                                                                                                 ">
-                                 <br>   <img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/best-seller.png" width=60 height=60>
-                                </div>
-                                                                    <div class="features-block__header-title" style="margin-bottom: 8px; padding-left: 0px; padding-right: 0px;">
-                                                                                    <p><strong style="font-weight: bold"><strong style="font-weight: bold"><?=strtoupper($_SERVER['HTTP_HOST'])?></strong> xizmatlar</strong></p>
-                                                                            </div>
-                                                            </div>
-                            <div class="features-block__body">
-                                                                    <div class="features-block__body-description" style="padding-left: 0px; padding-right: 0px;">
-                                                                                    <p>Biz sifat va arzonlikka e'tibor qaratadigan sotuvchi paneli uchun eng yaxshi SMM panelimiz.</p>
-                                                                            </div>
-                                                            </div>
-                        </div>
-                    </div>
-                                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="card features-block__card h-100"
-                             style="
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ">
-                            <div class="features-block__header">
-                                <div class="features-block__header-preview style-bg-primary-alpha-10 style-border-radius-default style-text-primary" style="margin-bottom: 10px;
-                                         height: 96px;                                                                                                                                                                                                                                                 ">
-                                    <?php if($theme == "Eternity") {
-echo "<br>";
-}?>
-<img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/speed.png" width=60 height=60>
-                                </div>
-                                                                    <div class="features-block__header-title" style="margin-bottom: 8px; padding-left: 0px; padding-right: 0px;">
-                                                                                    <p><strong style="font-weight: bold"><strong style="font-weight: bold"><?=strtoupper($_SERVER['HTTP_HOST'])?></strong> tezligi</strong></p>
-                                                                            </div>
-                                                            </div>
-                            <div class="features-block__body">
-                                                                    <div class="features-block__body-description" style="padding-left: 0px; padding-right: 0px;">
-                                                                                    <p><strong style="font-weight: bold"><?=strtoupper($_SERVER['HTTP_HOST'])?></strong> biz buyurtma qabul qilishimizdanoq uni sifatli va tezkor yetkazib beramiz.</p>
-                                                                            </div>
-                                                            </div>
-                                                            
-                        </div>
-                    </div>
-                            </div>
-                            
-        </div>
-        
-    </div>
-    
-</div>
-
-
-
-<div id="block_72">
-    <div class="header-with-text ">
-        <div class="bg"></div>
-        <div class="divider-top"></div>
-        <div class="divider-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="text-block__title">
-                                                    <h2 class="text-center"><b id="orders"></b><span style="text-align: CENTER"><?=strtoupper($_SERVER['HTTP_HOST'])?>  bilan hamisha muvaffaqiyatga erishing.</span></h2>
-                                            </div>
-                </div>
-            </div>
-            
-    </div>
-    
-</div>
-
-
-</div>
-</div>    </div></div></div></div></div>
-  </div></div></div></div></div></div></div>
-
-
-
-
-
-
-
-
-    <div class="wrapper-content__footer">
-       <div id="block_76">
-    <div class="footer ">
-        <div class="component_footer_single_line">
-            <div class="component-footer">
-                <div class="component-footer__public">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="component-footer__public-copyright">
-                                                                            <p class="text-center"><span style="text-align: CENTER"><img src="https://<?=$_SERVER['HTTP_HOST']?>/public/icons/law.png" width=20 height=20> Copyright. All Rights Reserved.</span></p>
-                                                                    </div>
-                                                                    <!-- TrustBox widget - Micro Review Count -->
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    
-     </div>
-  </div>
-</div>
-
-  <script type="text/javascript" src="https://<?=$_SERVER['HTTP_HOST']?>/public/global/ch3915babussofa4.js">
-      </script>
-  <script type="text/javascript" src="https://<?=$_SERVER['HTTP_HOST']?>/public/global/cgtptn05b64bwcs4.js">
-      </script>
-  <script type="text/javascript" src="https://<?=$_SERVER['HTTP_HOST']?>/public/global/xcz59lmywkfdgsp4.js">
-      </script>
-  <script type="text/javascript" src="https://<?=$_SERVER['HTTP_HOST']?>/public/global/wnzsoolloslhfumj.js">
-      </script>
-
-
-
-
-  <script type="text/javascript" >
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+     :root {
+         --bg-color: #050505;
+         --surface-color: #121212;
+         --surface-color-light: #1e1e1e;
+         --primary: #f33694;
+         --secondary: #aa00ff;
+         --text-main: #ffffff;
+         --text-muted: #a0a0a0;
+         --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+         --glow: 0 0 20px rgba(170, 0, 255, 0.4);
+     }
      
-  <script type="text/javascript" >
-     window.modules.signin = [];   </script>
-  <script type="text/javascript" >
-      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.27.6/js/jquery.tablesorter.js"></script><script src="https://cdn.rentalpanel.com/toolkit.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	
+     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+     body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+     
+     /* Navbar */
+     .navbar {
+         display: flex; justify-content: space-between; align-items: center; 
+         padding: 20px 5%; background: rgba(5, 5, 5, 0.8);
+         backdrop-filter: blur(15px); position: fixed; width: 100%; top: 0; z-index: 1000;
+         border-bottom: 1px solid rgba(255,255,255,0.05);
+         transition: all 0.3s ease;
+     }
+     .brand { 
+         font-size: 28px; font-weight: 800; background: var(--gradient); 
+         -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+         text-decoration: none; letter-spacing: 1px;
+     }
+     .nav-links { display: flex; gap: 30px; }
+     .nav-links a { 
+         color: var(--text-main); text-decoration: none; font-weight: 600; font-size: 16px;
+         display: flex; align-items: center; gap: 8px; transition: 0.3s ease;
+         padding: 8px 16px; border-radius: 8px;
+     }
+     .nav-links a:hover { 
+         color: var(--primary); background: rgba(255,255,255,0.03);
+     }
+     
+     /* Hero Section */
+     .hero {
+         min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+         text-align: center; padding: 120px 5% 50px; position: relative;
+     }
+     .hero::before {
+         content: ''; position: absolute; top: 20%; left: 50%; transform: translate(-50%, -50%);
+         width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(170,0,255,0.15) 0%, rgba(0,0,0,0) 70%);
+         z-index: -1; pointer-events: none;
+     }
+     .hero h1 { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 25px; max-width: 900px; }
+     .hero h1 span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+     .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin-bottom: 40px; }
+     .hero-btn {
+         padding: 16px 45px; font-size: 1.2rem; font-weight: 600; color: white; background: var(--gradient);
+         border: none; border-radius: 50px; cursor: pointer; transition: 0.4s ease; text-decoration: none;
+         box-shadow: var(--glow); position: relative; overflow: hidden;
+     }
+     .hero-btn::after {
+         content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+         background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+         transition: 0.5s ease;
+     }
+     .hero-btn:hover::after { left: 100%; }
+     .hero-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(170, 0, 255, 0.6); }
 
-</script><script type="text/javascript" src="https://<?=$_SERVER['HTTP_HOST']?>/public/<?=$theme?>/js/ajax.js">
-   
+     /* Stats Section */
+     .stats-container { 
+         display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+         gap: 30px; padding: 50px 5%; max-width: 1400px; margin: -50px auto 50px; position: relative; z-index: 10;
+     }
+     .stat-card {
+         background: var(--surface-color); padding: 40px 30px; border-radius: 24px; text-align: center;
+         border: 1px solid rgba(255,255,255,0.05); transition: 0.4s ease; position: relative; overflow: hidden;
+         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+     }
+     .stat-card::before {
+         content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+         background: var(--gradient); opacity: 0; transition: 0.4s ease;
+     }
+     .stat-card:hover::before { opacity: 1; }
+     .stat-card:hover { transform: translateY(-10px); border-color: rgba(170,0,255,0.3); }
+     .stat-icon { font-size: 45px; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+     .stat-value { font-size: 3.2rem; font-weight: 800; margin-bottom: 5px; color: white; letter-spacing: -1px; }
+     .stat-label { font-size: 1.1rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+     /* Features Section */
+     .features { padding: 80px 5%; max-width: 1400px; margin: 0 auto; text-align: center; }
+     .section-title { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; }
+     .section-title span { color: var(--primary); }
+     .features-desc { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 60px; max-width: 600px; margin-left: auto; margin-right: auto; }
+     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+     .feature-item {
+         background: linear-gradient(145deg, var(--surface-color), var(--surface-color-light)); padding: 40px 30px;
+         border-radius: 24px; text-align: left; transition: 0.4s ease;
+         border-top: 1px solid rgba(255,255,255,0.05); border-left: 1px solid rgba(255,255,255,0.05);
+     }
+     .feature-item:hover { transform: translateY(-10px); box-shadow: var(--glow); border-color: rgba(170,0,255,0.3); }
+     .feature-icon {
+         width: 80px; height: 80px; border-radius: 20px; background: rgba(170, 0, 255, 0.05);
+         display: flex; align-items: center; justify-content: center; font-size: 35px;
+         color: var(--primary); margin-bottom: 25px; border: 1px solid rgba(170, 0, 255, 0.2);
+     }
+     .feature-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 15px; color: #fff; }
+     .feature-text { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; }
+
+     /* Footer */
+     footer { 
+         text-align: center; padding: 40px 5%; border-top: 1px solid rgba(255,255,255,0.05); 
+         margin-top: 80px; color: var(--text-muted); background: var(--surface-color);
+     }
+     footer p { display: flex; align-items: center; justify-content: center; gap: 10px; }
+     
+     /* Responsive */
+     @media (max-width: 992px) {
+         .hero h1 { font-size: 3.5rem; }
+     }
+     @media (max-width: 768px) {
+         .hero h1 { font-size: 2.8rem; }
+         .hero p { font-size: 1.1rem; }
+         .nav-links { display: none; }
+         .navbar { justify-content: center; }
+         .section-title { font-size: 2.5rem; }
+     }
+     @media (max-width: 480px) {
+         .hero h1 { font-size: 2.2rem; }
+         .stat-value { font-size: 2.5rem; }
+     }
+     
+     /* Animations */
+     @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+     .animate-up { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+     .delay-1 { animation-delay: 0.2s; }
+     .delay-2 { animation-delay: 0.4s; }
+     .delay-3 { animation-delay: 0.6s; }
+     .delay-4 { animation-delay: 0.8s; }
+     .delay-5 { animation-delay: 1.0s; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+      <a href="/" class="brand"><?=strtoupper($_SERVER['HTTP_HOST'])?></a>
+      <div class="nav-links">
+          <a href="/services"><i class="fas fa-list-ul"></i> Xizmatlar</a>
+          <a href="/api"><i class="fas fa-code"></i> API</a>
+          <a href="https://t.me/<?=$bot?>"><i class="fab fa-telegram-plane"></i> Bot</a>
+      </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+      <h1 class="animate-up">Ijtimoiy akkauntingizni <span>bir zumda</span> rivojlantiring</h1>
+      <p class="animate-up delay-1">Ijtimoiy hisobingizni bitta panelda boshqarish uchun vaqtni tejang. Instagram, YouTube, Telegram, Twitter kabi tarmoqlar uchun eng tezkor SMM xizmatlari.</p>
+      <a href="/services" class="hero-btn animate-up delay-2">Xizmatlarni Ko'rish</a>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats-container">
+      <div class="stat-card animate-up">
+          <i class="fas fa-layer-group stat-icon"></i>
+          <div class="stat-value"><?=countRow(['table'=>"services"]) ?></div>
+          <div class="stat-label">Barcha xizmatlar</div>
+      </div>
+      <div class="stat-card animate-up delay-1">
+          <i class="fas fa-check-circle stat-icon"></i>
+          <div class="stat-value"><?=countRow(['table'=>"orders","where"=>["status"=>"Completed"]]) ?></div>
+          <div class="stat-label">Bajarilgan buyurtmalar</div>
+      </div>
+      <div class="stat-card animate-up delay-2">
+          <i class="fas fa-users stat-icon"></i>
+          <div class="stat-value"><?=countRow(['table'=>"users"]) ?></div>
+          <div class="stat-label">Barcha obunachilar</div>
+      </div>
+      <div class="stat-card animate-up delay-3">
+          <i class="fas fa-headset stat-icon"></i>
+          <div class="stat-value">24/7</div>
+          <div class="stat-label">Tezkor yordam markazi</div>
+      </div>
+      <div class="stat-card animate-up delay-4">
+          <i class="fas fa-gift stat-icon"></i>
+          <div class="stat-value"><?=countRow(['table'=>"services","where"=>["service_price"=>"0"]]) ?></div>
+          <div class="stat-label">Bepul xizmatlar</div>
+      </div>
+      <div class="stat-card animate-up delay-5">
+          <i class="fas fa-chart-line stat-icon"></i>
+          <div class="stat-value"><?=countRow(['table'=>"orders"]) ?></div>
+          <div class="stat-label">Barcha buyurtmalar</div>
+      </div>
+  </div>
+
+  <!-- Features -->
+  <section class="features">
+      <h2 class="section-title animate-up">Nima uchun <span><?=strtoupper($_SERVER['HTTP_HOST'])?>?</span></h2>
+      <p class="features-desc animate-up delay-1">Bizning panelda SMM xizmatlariga buyurtma berishdan qanday foyda olishingiz mumkinligini bilib oling.</p>
+      
+      <div class="features-grid">
+          <div class="feature-item animate-up delay-2">
+              <div class="feature-icon"><i class="fas fa-wallet"></i></div>
+              <h3 class="feature-title">Eng arzon SMM panel</h3>
+              <p class="feature-text">Bozordagi barcha mavjud panellar orasida eng arzon va ishonchli xizmatlarni taqdim etamiz.</p>
+          </div>
+          <div class="feature-item animate-up delay-3">
+              <div class="feature-icon"><i class="fas fa-credit-card"></i></div>
+              <h3 class="feature-title">Qulay to'lov tizimlari</h3>
+              <p class="feature-text">Ko'plab mahalliy va xalqaro to'lov tizimlari orqali hisobni tez va oson to'ldirish imkoniyati.</p>
+          </div>
+          <div class="feature-item animate-up delay-4">
+              <div class="feature-icon"><i class="fas fa-star"></i></div>
+              <h3 class="feature-title">Premium xizmatlar</h3>
+              <p class="feature-text">Sifat va kafolatga e'tibor qaratadigan eng yaxshi va organik obunachilarni jalb qiluvchi SMM panel.</p>
+          </div>
+          <div class="feature-item animate-up delay-5">
+              <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+              <h3 class="feature-title">Tezkor yetkazish</h3>
+              <p class="feature-text">Buyurtmani qabul qilishimiz bilanoq, uni sifatli va rekord darajadagi tezlikda yetkazib beramiz.</p>
+          </div>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+      <p><i class="fas fa-shield-halved" style="color: var(--primary);"></i> &copy; <?=date('Y')?> <?=strtoupper($_SERVER['HTTP_HOST'])?>. Barcha huquqlar himoyalangan.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="text/javascript" src="https://<?=$_SERVER['HTTP_HOST']?>/public/global/ch3915babussofa4.js"></script>
+  <script type="text/javascript" src="https://<?=$_SERVER['HTTP_HOST']?>/public/global/cgtptn05b64bwcs4.js"></script>
+  <script type="text/javascript" src="https://<?=$_SERVER['HTTP_HOST']?>/public/global/xcz59lmywkfdgsp4.js"></script>
+  <script type="text/javascript" src="https://<?=$_SERVER['HTTP_HOST']?>/public/global/wnzsoolloslhfumj.js"></script>
+  
+  <script type="text/javascript">
+     window.modules = window.modules || {};
+     window.modules.signin = []; 
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.27.6/js/jquery.tablesorter.js"></script>
+  <script src="https://cdn.rentalpanel.com/toolkit.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script type="text/javascript" src="https://<?=$_SERVER['HTTP_HOST']?>/public/<?=$theme?>/js/ajax.js"></script>
+
+  <!-- Add animation observer -->
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      entry.target.style.animationPlayState = 'running';
+                  }
+              });
+          });
+
+          document.querySelectorAll('.animate-up').forEach((el) => {
+              el.style.animationPlayState = 'paused';
+              observer.observe(el);
+          });
+          
+          // Add scrolling effect to navbar
+          window.addEventListener('scroll', () => {
+              const navbar = document.querySelector('.navbar');
+              if (window.scrollY > 50) {
+                  navbar.style.background = 'rgba(5, 5, 5, 0.95)';
+                  navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
+              } else {
+                  navbar.style.background = 'rgba(5, 5, 5, 0.8)';
+                  navbar.style.boxShadow = 'none';
+              }
+          });
+      });
+  </script>
+
+</body>
+</html>
 
   
