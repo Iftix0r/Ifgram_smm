@@ -209,48 +209,7 @@ return true;
 }
 }
 
-function captcha($uid){
-$javob = file_get_contents("captcha/$uid.dat");
-$captcha=file_get_contents("captcha/$uid.txt");
-if($captcha==true){
-return true;
-}else{
-$rand=rand(1,100);
-file_put_contents("captcha/$uid.dat","$rand");
-bot('sendphoto', [
-'chat_id'=>$uid,
-'photo'=>"https://dummyimage.com/279x100/ffffff/000000.jpg&text=Rasmdagi sonni kiriting: $rand ",
-'caption'=>"<b>
-👋Salom, Iltimos Bot emasligingizni tasdiqlang❗️</b>",
-'parse_mode'=>"html",
-]);
-exit();
-}
-}
-$update = json_decode(file_get_contents('php://input'));
-$message = $update->message;
-$cid = $message->chat->id;
-$text = $message->text;
-$tx = $message->text;
-$uid= $message->from->id;
-$captcha = file_get_contents("captcha/$uid.txt");
-$javob = file_get_contents("captcha/$uid.dat");
-mkdir("captcha");
-if($text==$javob){
-file_put_contents("captcha/$uid.txt","Successfully");
-bot('SendMessage',[
-'chat_id'=>$uid,
-'text'=>"<b>👤Inson ekanligingiz Tasdiqlandi✅ @$bot dan foydalanavering</b>",
-'parse_mode'=>"html",
-'reply_markup'=>json_encode([
-'resize_keyboard'=>true,
-'keyboard'=>[
-[['text'=>"/start"]],
-]])
-]);
-}
-if($text=="$tx" and captcha($uid)=="true" and $text!="$javob"){
-}
+
 
 
 
